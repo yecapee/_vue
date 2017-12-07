@@ -1,11 +1,10 @@
 <html>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <title>_vue</title>
 <style>
     body {
         font-weight: 300;
-
     }
 
     h1 {}
@@ -25,8 +24,8 @@
     li {}
 
     .main {
-        margin-left: calc(50% - 250px);
-        width: 500px;
+        margin-left: calc(50% - 300px);
+        width: 600px;
         line-height: 1.5em;
     }
 
@@ -72,7 +71,7 @@ function _vue(obj) {
     }
     this.change = function (data) {
         for (var key in data) {
-        this.state[key] = data[key];
+            this.state[key] = data[key];
         }
         document.getElementById(this.id).innerHTML = this.render(this.state);
     }
