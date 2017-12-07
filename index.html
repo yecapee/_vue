@@ -99,8 +99,8 @@ function _vue(obj) {
     this.render = function (dataObj) {
         var rsHtml = this.template;
         for (var key in dataObj) {
-        var reg = new RegExp('{' + key + '}', 'g')
-        rsHtml = rsHtml.replace(reg, dataObj[key]);
+            var reg = new RegExp('{' + key + '}', 'g')
+            rsHtml = rsHtml.replace(reg, dataObj[key]);
         };
         return rsHtml;
     }
