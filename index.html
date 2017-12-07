@@ -1,10 +1,18 @@
 <html>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+</head>
 <title>_vue</title>
 <style>
-    body {
+
+    body,html {
         font-weight: 300;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        min-width: 100%;
     }
 
     h1 {
@@ -25,7 +33,7 @@
         position: absolute;
         left: 0px;
         width: 100%;
-        padding-left: calc(50% - 300px);
+        /* padding-left: calc(50% - 300px); */
         background-color: #303030;
         height: 300px;
         box-sizing: border-box;
@@ -38,13 +46,24 @@
     }
 
     .main {
-        margin-left: calc(50% - 300px);
-        width: 600px;
+        /* margin-left: calc(50% - 300px); */
+        padding: 0 15px;
+        width: 100%;
+        max-width: 600px;
         line-height: 1.5em;
     }
 
     .content {
         margin-top: 380px;
+    }
+
+    @media screen and (min-width: 600px) {
+        ul {
+            padding-left: calc(50% - 300px);
+        }
+        .main {
+            margin-left: calc(50% - 300px);
+        }
     }
 </style>
 
