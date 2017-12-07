@@ -51,12 +51,12 @@ function _vue(obj) {
 //         body:'0987654321'
 //     }
 // });
-//
+
 // app.change({
 //     title:'ASDFGHJK',
 //     body:'123456789'
 // });
-//
+
 // app.change({
 //     title:'ggggg',
 // });
