@@ -7,7 +7,11 @@
         font-weight: 300;
     }
 
-    h1 {}
+    h1 {
+        margin-top: 1em;
+        font-size: 5em;
+        margin-bottom: 1em;
+    }
 
     h4 {
         margin-top: 4em;
@@ -17,11 +21,19 @@
     }
 
     ul {
-        min-height: 70%;
-        padding-left: 20px;
+        position: absolute;
+        left: 0px;
+        width: 100%;
+        padding-left: calc(50% - 300px);
+        background-color: #303030;
+        min-height: 50%;
     }
 
-    li {}
+    li {
+        list-style: none;
+        line-height: 1.6em;
+        color: white;
+    }
 
     .main {
         margin-left: calc(50% - 300px);
@@ -29,11 +41,8 @@
         line-height: 1.5em;
     }
 
-    i {
-        display: inline;
-        width: 0px;
-        height: 0px;
-        margin-right: 25px;
+    .content {
+        margin-top: 60%;
     }
 </style>
 
@@ -41,21 +50,24 @@
     <div class="main">
         <h1>_vue.js</h1>
         <p>
-            這個寫不完整的渲染函數花了我一個早餐時間,測試它也用了我一杯無糖可樂的時間...
+            這個寫不完整的渲染函數花了我一個早餐時間,測試它也用了我一杯無糖可樂的時間.
+            <br/> 但是寫這個網頁弄了我整個下午...
             <br/> 沒經過仔細測試 但我猜它應該具備以下特性：
         </p>
         <ul>
-            <li>沒有錯誤檢查</li>
-            <li>沒有list的解決方案</li>
-            <li>沒有優美的風格</li>
-            <li>沒有效能</li>
-            <li>沒有虛擬dom</li>
-            <li>沒有事件綁定</li>
-            <li>沒有子元件</li>
-            <li>沒有的很多 但是不影響我的自我感覺良好</li>
+            <li>- 沒有錯誤檢查</li>
+            <li>- 沒有list的解決方案</li>
+            <li>- 沒有優美的風格</li>
+            <li>- 沒有效能</li>
+            <li>- 沒有虛擬dom</li>
+            <li>- 沒有事件綁定</li>
+            <li>- 沒有子元件</li>
+            <li>- 沒有的很多 但是不影響我的自我感覺良好</li>
+            <li>- 某個層面來說它可以用</li>
+            <li>+ 國人自製</li>
         </ul>
 
-        <h4>Source code</h4>
+        <h4 class="content">Source code</h4>
         <pre><code class="javascript">
 function _vue(obj) {
     this.id = obj.domId;
