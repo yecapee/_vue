@@ -2,7 +2,8 @@
 <head>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="./css/font-awesome.css">
 </head>
 <title>_vue</title>
 <style>
@@ -15,10 +16,38 @@
         min-width: 100%;
     }
 
+    .gitLink{
+        font-size: .3em;
+        font-weight: 200;
+        line-height: 2.5em;
+        padding: 0 1.5em;
+        border-radius: 0;
+        border: 1px solid #303030;
+        display: inline-block;
+        vertical-align: middle;
+        transition: .3s;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #303030;
+        color: white;
+    }
+
+    .gitLink:hover, .gitLink a:active{
+        /* border-radius: 1.25em; */
+        background-color: white;
+        color: #303030;
+    }
+
     h1 {
-        margin-top: 1em;
+        margin-top: 36px;
         font-size: 5em;
-        margin-bottom: 1em;
+        margin-bottom: 20px;
+        line-height: 1.5em;
+    }
+
+    a{
+        text-decoration: none;
+        color: inherit;
     }
 
     h4 {
@@ -43,29 +72,56 @@
     }
 
     .content {
-        padding-right:calc( (100% - 600px) / 2);
         padding-left:calc( (100% - 600px) / 2);
         width: 100%;
         line-height: 1.5em;
         box-sizing: border-box;
     }
 
+    .bottom {
+        padding: 5px 0;
+        padding-left:calc( (100% - 600px) / 2);
+        width: 100%;
+        line-height: 1.5em;
+        background-color: #303030;
+        color: white;
+        box-sizing: border-box;
+    }
+    .bottom p{
+        margin: 0;
+    }
+
     @media screen and (max-width: 600px) {
-        .content {
+        .content,.bottom {
             padding-right: 15px;
             padding-left: 15px;
+        }
+        .gitLink{
+            width: 100%;
         }
     }
 
 
 </style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110926326-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-110926326-1');
+</script>
 <body>
         <div class="content">
-            <h1>_vue.js</h1>
+            <h1>_vue.js 
+                <div class="gitLink">
+                    <a href="https://github.com/yecapee/_vue/blob/master/_vue.js">GITHUB</a>
+                </div>
+            </h1>
+            
             <p>
                 這個寫不完整的渲染函數花了我一個早餐時間,測試它也用了我一杯無糖可樂的時間.<br/>
-                <br/>
                 <br/> 但是建立這個網頁卻弄了我整個下午...
                 <br/> 這個函數雖然沒經過仔細測試 但我猜它應該具備以下特性：
             </p>
@@ -133,9 +189,20 @@ app.change({
             </code></pre>
         </div>
         <div>
+        <div class="bottom">
+            <p>
+                Panpan Pan<br/>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> yecapee@gmail.com
+                <a href="https://github.com/yecapee"><i class="fa fa-github" aria-hidden="true"></i></a><br/>
+                <i class="fa fa-map-marker" aria-hidden="true"></i> 台灣 高雄,台北<br/>
+                <i class="fa fa-globe" aria-hidden="true"></i> 中文,台語
+            </p>
+        </div>
 </body>
 
 <script>
     hljs.initHighlightingOnLoad();
 </script>
+
+
 </html>
