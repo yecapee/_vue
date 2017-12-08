@@ -22,7 +22,6 @@
     }
 
     h4 {
-        margin-top: 4em;
         margin-bottom: .5em;
         font-weight: 700;
         font-size: 1.2em;
@@ -30,12 +29,10 @@
 
     ul {
         padding-top: 1.6em;
-        position: absolute;
+        padding-bottom: 1.6em;
         left: 0px;
         width: 100%;
-        /* padding-left: calc(50% - 300px); */
         background-color: #303030;
-        height: 300px;
         box-sizing: border-box;
     }
 
@@ -45,39 +42,35 @@
         color: white;
     }
 
-    .main {
-        /* margin-left: calc(50% - 300px); */
-        padding: 0 8px;
+    .content {
+        padding-right:calc( (100% - 600px) / 2);
+        padding-left:calc( (100% - 600px) / 2);
         width: 100%;
-        max-width: 600px;
         line-height: 1.5em;
         box-sizing: border-box;
     }
 
-    .content {
-        margin-top: 380px;
+    @media screen and (max-width: 600px) {
+        .content {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
     }
 
-    @media screen and (min-width: 600px) {
-        ul {
-            padding-left: calc(50% - 300px);
-        }
-        .main {
-            margin-left: calc(50% - 300px);
-        }
-    }
+
 </style>
 
 <body>
-    <div class="main">
-        <h1>_vue.js</h1>
-        <p>
-            這個寫不完整的渲染函數花了我一個早餐時間,測試它也用了我一杯無糖可樂的時間.<br/>
-            <br/>
-            <br/> 但是建立這個網頁弄了我整個下午...
-            <br/> 沒經過仔細測試 但我猜它應該具備以下特性：
-        </p>
-        <ul>
+        <div class="content">
+            <h1>_vue.js</h1>
+            <p>
+                這個寫不完整的渲染函數花了我一個早餐時間,測試它也用了我一杯無糖可樂的時間.<br/>
+                <br/>
+                <br/> 但是建立這個網頁卻弄了我整個下午...
+                <br/> 這個函數雖然沒經過仔細測試 但我猜它應該具備以下特性：
+            </p>
+        </div>
+        <ul class="content">
             <li>- 沒有錯誤檢查</li>
             <li>- 沒有list的解決方案</li>
             <li>- 沒有優美的風格</li>
@@ -89,55 +82,56 @@
             <li>- 某個層面來說它可以用</li>
             <li>+ 國人自製</li>
         </ul>
+        <div class="content">
+            <h4>Source code</h4>
+            <pre><code class="javascript">
+                function _vue(obj) {
+                    this.id = obj.domId;
+                    this.template = obj.template;
+                    this.state = {};
+                    this.render = function (dataObj) {
+                        var rsHtml = this.template;
+                        for (var key in dataObj) {
+                            var reg = new RegExp('{' + key + '}', 'g')
+                            rsHtml = rsHtml.replace(reg, dataObj[key]);
+                        };
+                        return rsHtml;
+                    }
+                    this.change = function (data) {
+                        for (var key in data) {
+                            this.state[key] = data[key];
+                        }
+                        document.getElementById(this.id).innerHTML = this.render(this.state);
+                    }
+                    
+                    for (var key in obj.data) {
+                        this.state[key] = obj.data[key];
+                    }
+                    this.change();
+                }
+            </code></pre>
 
-        <h4 class="content">Source code</h4>
-        <pre><code class="javascript">
-function _vue(obj) {
-    this.id = obj.domId;
-    this.template = obj.template;
-    this.state = {};
-    this.render = function (dataObj) {
-        var rsHtml = this.template;
-        for (var key in dataObj) {
-            var reg = new RegExp('{' + key + '}', 'g')
-            rsHtml = rsHtml.replace(reg, dataObj[key]);
-        };
-        return rsHtml;
-    }
-    this.change = function (data) {
-        for (var key in data) {
-            this.state[key] = data[key];
-        }
-        document.getElementById(this.id).innerHTML = this.render(this.state);
-    }
-    
-    for (var key in obj.data) {
-        this.state[key] = obj.data[key];
-    }
-    this.change();
-}
-        </code></pre>
+            <h4>Example</h4>
+            <pre><code class="javascript">
+                var app = new _vue({
+                    domId:'div',
+                    template:'&lth1&gt{title}&lt/h1&gt&lth4&gt{body}&lt/h4&gt',
+                    data:{
+                        title:'fghjkl',
+                        body:'0987654321'
+                    }
+                });
 
-        <h4>Example</h4>
-        <pre><code class="javascript">
-var app = new _vue({
-    domId:'div',
-    template:'&lth1&gt{title}&lt/h1&gt&lth4&gt{body}&lt/h4&gt',
-    data:{
-        title:'fghjkl',
-        body:'0987654321'
-    }
-});
+                app.change({
+                    title:'ASDFGHJK',
+                    body:'123456789'
+                });
 
-app.change({
-    title:'ASDFGHJK',
-    body:'123456789'
-});
-
-app.change({
-    title:'ggggg',
-});
-        </code></pre>
+                app.change({
+                    title:'ggggg',
+                });
+            </code></pre>
+        </div>
         <div>
 </body>
 
