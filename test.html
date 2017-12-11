@@ -1,0 +1,42 @@
+<html>
+<body>
+    <div id="app">
+        <h1>{title}</h1>
+        {body}
+    </div>
+</body>
+<script>
+    function _vue(obj) {
+        this.id = obj.domId;
+        this.template = document.getElementById(this.id).innerHTML;
+        this.state = {};
+        this.render = function (dataObj) {
+            var rsHtml = this.template;
+            for (var key in dataObj) {
+            var reg = new RegExp('{' + key + '}', 'g')
+            rsHtml = rsHtml.replace(reg, dataObj[key]);
+            };
+            return rsHtml;
+        }
+        this.change = function (data) {
+            for (var key in data) {
+            this.state[key] = data[key];
+            }
+            document.getElementById(this.id).innerHTML = this.render(this.state);
+        }
+
+        for (var key in obj.data) {
+            this.state[key] = obj.data[key];
+        }
+        this.change();
+    }
+
+var app = new _vue({
+    domId:'app',
+    data:{
+        title:'fghjkl',
+        body:'0987654321'
+    }
+});
+</script>
+</html>

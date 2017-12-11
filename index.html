@@ -81,6 +81,12 @@
         box-sizing: border-box;
     }
 
+    .result{
+        border: 1px solid rgb(197, 197, 197);
+        box-sizing: border-box;
+        padding: 15px;
+    }
+
     .bottom {
         font-size: .5em;
         padding: 5px 0;
@@ -173,25 +179,31 @@ function _vue(obj) {
             </code></pre>
 
             <h4>Example</h4>
+            <h6>HTML</h6>
+            <pre><code class="html">
+&ltdiv id="app"&gt
+    &ltstrong&gt{title}&lt/strong&gt
+    {body}
+&lt/div&gt
+            </code></pre>
+
+            <h6>JS</h6>
             <pre><code class="javascript">
 var app = new _vue({
     domId:'div',
-    template:'&lth1&gt{title}&lt/h1&gt&lth4&gt{body}&lt/h4&gt',
     data:{
-        title:'fghjkl',
-        body:'0987654321'
+        title:'Hello',
+        body:'_vue!'
     }
 });
-
-app.change({
-    title:'ASDFGHJK',
-    body:'123456789'
-});
-
-app.change({
-    title:'ggggg',
-});
             </code></pre>
+            <p>
+                <div class="result">
+                    <strong>Hello</strong>
+                    _vue!
+                </div>
+            </p>
+
         </div>
         <div>
         <div class="bottom">
