@@ -79,6 +79,7 @@
         box-sizing: border-box;
         padding: 15px;
         margin: 13px 0;
+        margin-bottom: 30px;
         background-color: #F0F0F0;
     }
     .bottom {
@@ -216,7 +217,22 @@ var app = new _vue({
                 <strong>Hello</strong>
                 _vue!
             </div>
-            <P></P>
+
+            <P>
+                另外,你還可以透過change方法動態更新內容
+            </P>
+
+            <h6>JS</h6>
+            <pre><code class="javascript">
+app.change({
+    body: vueeeeeeeeeeeeeee!
+});         
+            </code></pre>
+            <h6>RESULT</h6>
+            <div class="result">
+                <strong>Hello</strong>
+                vueeeeeeeeeeeeeee!
+            </div>
 
         </div>
         <div>
