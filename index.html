@@ -194,8 +194,7 @@
         <li>- 沒有效能</li>
         <li>- 沒有虛擬dom</li>
         <li>- 沒有事件綁定</li>
-        <li>-
-            <strike>沒有子元件</strike>
+        <li>-<strike>沒有子元件</strike>
         </li>
         <li>- 沒有的很多 但是不影響我的自我感覺良好</li>
         <li>- 某個層面來說它可以用</li>
@@ -260,8 +259,7 @@ _vue.component = function(obj) {
         <pre>
             <code class="html">
 &ltdiv id="app"&gt
-    &ltstrong&gt{title}&lt/strong&gt
-    {body}
+    &ltstrong&gt{title}&lt/strong&gt{body}
 &lt/div&gt
             </code>
         </pre>
@@ -312,9 +310,8 @@ app.change({
         <pre>
             <code class="html">
 &ltdiv id="app"&gt
-    &ltstrong&gt{title}&lt/strong&gt
-    {body}
-    &ltvue body="not Vue"&gt{body}&lt/vue&gt
+    &ltstrong&gt{title}&lt/strong&gt{body}
+    &ltvue body="not Vue"&gt&lt/vue&gt
 &lt/div&gt
             </code>
         </pre>
