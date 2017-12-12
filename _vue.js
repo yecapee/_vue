@@ -49,33 +49,3 @@ _vue.component = function(obj) {
   this.comTemplate[obj.el] = obj.template;
 };
 
-// Examples
-//
-
-<div id="app">
-  <h4>{title}</h4>
-  <p>{body}</p>
-  <vue body=""></vue>
-</div>
-
-var app = _vue.component({
-    el:'vue',
-    template:'<p>{body}</p>'
-});
-
-var app = new _vue({
-    domId:'div',
-    data:{
-        title:'HELLO',
-        body:'_vue.js'
-    }
-});
-
-app.change({
-    title:'ASDFGHJK',
-    body:'123456789'
-});
-
-// app.change({
-//     title:'ggggg',
-// });
