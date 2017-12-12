@@ -1,28 +1,48 @@
 <html>
+
 <body>
     <div id="app">
-        <h1>{title}</h1>
-        {body}
+        <h4>{title}</h4>
+        <p>{body}</p>
+        <vue body="not Vue.js"></vue>
     </div>
 </body>
 <script>
+
     function _vue(obj) {
         this.id = obj.domId;
         this.template = document.getElementById(this.id).innerHTML;
         this.state = {};
-        this.render = function (dataObj) {
-            var rsHtml = this.template;
+        this.render = function (template,dataObj) {
+            var rsHtml = template;
             for (var key in dataObj) {
-            var reg = new RegExp('{' + key + '}', 'g')
-            rsHtml = rsHtml.replace(reg, dataObj[key]);
+                var reg = new RegExp('{' + key + '}', 'g')
+                rsHtml = rsHtml.replace(reg, dataObj[key]);
             };
             return rsHtml;
         }
         this.change = function (data) {
             for (var key in data) {
-            this.state[key] = data[key];
+                this.state[key] = data[key];
             }
-            document.getElementById(this.id).innerHTML = this.render(this.state);
+            document.getElementById(this.id).innerHTML = this.render(this.template, this.state);
+            this.componentBind();
+        }
+        this.componentBind = function(){
+            var __vue = this.constructor;
+            var render = this.render;
+            for (var key in __vue.comTemplate) {
+                var comTemplate = __vue.comTemplate[key];
+                document.querySelectorAll('#' + this.id + ' ' + key).forEach(function (el, index) {
+                    console.log('-------',el.attributes[0]);
+                    var data = {};
+                    for(var i = 0; i < el.attributes.length; i++ ){
+                        console.log(el.attributes[i].name,el.attributes[i].value)
+                        data[el.attributes[i].name] = el.attributes[i].value;
+                    }
+                    el.innerHTML = render(comTemplate,data);
+                })
+            }
         }
 
         for (var key in obj.data) {
@@ -30,13 +50,24 @@
         }
         this.change();
     }
+    _vue.comTemplate = {};
+    _vue.component = function(obj) {
+        this.comTemplate[obj.el] = obj.template;
+    };
 
-var app = new _vue({
-    domId:'app',
-    data:{
-        title:'fghjkl',
-        body:'0987654321'
-    }
-});
+
+    _vue.component({
+        el: 'vue',
+        template: '<p>{body}</p>'
+    });
+
+    var app = new _vue({
+        domId: 'app',
+        data: {
+            title: 'HELLO',
+            body: '_vue.js'
+        }
+    });
 </script>
+
 </html>
