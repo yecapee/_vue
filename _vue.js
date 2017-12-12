@@ -29,10 +29,8 @@ function _vue(obj) {
       for (var key in __vue.comTemplate) {
           var comTemplate = __vue.comTemplate[key];
           document.querySelectorAll('#' + this.id + ' ' + key).forEach(function (el, index) {
-              console.log('-------',el.attributes[0]);
               var data = {};
               for(var i = 0; i < el.attributes.length; i++ ){
-                  console.log(el.attributes[i].name,el.attributes[i].value)
                   data[el.attributes[i].name] = el.attributes[i].value;
               }
               el.innerHTML = render(comTemplate,data);

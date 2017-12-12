@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
@@ -8,15 +9,17 @@
 </head>
 <title>_vue.js</title>
 <style>
-    body,html {
+    body,
+    html {
         font-weight: 300;
         margin: 0px;
         padding: 0px;
         width: 100%;
         min-width: 100%;
-        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     }
-    .gitLink{
+
+    .gitLink {
         font-size: .3em;
         font-weight: 200;
         line-height: 2.5em;
@@ -31,29 +34,46 @@
         background-color: #303030;
         color: white;
     }
-    .gitLink:hover, .gitLink a:active{
+
+    .gitLink:hover,
+    .gitLink a:active {
         /* border-radius: 1.25em; */
         background-color: white;
         color: #303030;
     }
+
     h1 {
         margin-top: 36px;
         font-size: 5em;
         margin-bottom: 20px;
         line-height: 1.5em;
     }
-    a{
+
+    a {
         text-decoration: none;
         color: inherit;
     }
+
     h4 {
         margin-bottom: .5em;
         font-weight: 700;
         font-size: 1.2em;
     }
-    h6{
+
+    .subTitle {
+
+    }
+
+    .underLine {
+        margin-top: 80px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #bbbbbb;
+    }
+
+    h6 {
         margin-bottom: 2px;
     }
+
     ul {
         padding-top: 1.6em;
         padding-bottom: 1.6em;
@@ -62,19 +82,26 @@
         background-color: #303030;
         box-sizing: border-box;
     }
+
     li {
         list-style: none;
         line-height: 1.6em;
         color: white;
     }
+
     .content {
-        padding-left:calc( (100% - 800px) / 2);
-        padding-right:calc( (100% - 800px) / 2);
+        padding-left: calc( (100% - 800px) / 2);
+        padding-right: calc( (100% - 800px) / 2);
         width: 100%;
         line-height: 1.5em;
         box-sizing: border-box;
     }
-    .result{
+
+    .content p{
+        font-size: 16px;
+    }
+
+    .result {
         border: 1px solid #F0F0F0;
         box-sizing: border-box;
         padding: 15px;
@@ -82,11 +109,12 @@
         margin-bottom: 30px;
         background-color: #F0F0F0;
     }
+
     .bottom {
         font-size: .5em;
         padding: 5px 15px;
-        padding-left:calc( (100% - 800px) / 2);
-        padding-right:calc( (100% - 800px) / 2);
+        padding-left: calc( (100% - 800px) / 2);
+        padding-right: calc( (100% - 800px) / 2);
         width: 100%;
         line-height: 1.5em;
         background-color: #303030;
@@ -94,79 +122,87 @@
         box-sizing: border-box;
         overflow: auto;
     }
-    .bottom p{
+
+    .bottom p {
         margin: 0;
         padding: 0 5px;
     }
-    .bottom p span{
+
+    .bottom p span {
         margin-left: 5px;
     }
-    .fl{
+
+    .fl {
         float: left;
         text-align: left;
     }
-    .fr{
+
+    .fr {
         float: right;
         text-align: right;
     }
 
     @media screen and (max-width: 600px) {
-        .content,.bottom {
+        .content,
+        .bottom {
             padding-right: 15px;
             padding-left: 15px;
         }
-        .gitLink{
+        .gitLink {
             width: 100%;
         }
-        .fr{
+        .fr {
             width: 100%;
             float: left;
             text-align: left;
         }
-        .bottom p span{
+        .bottom p span {
             display: block;
         }
     }
-
-
 </style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110926326-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-110926326-1');
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-110926326-1');
 </script>
+
 <body>
-        <div class="content">
-            <h1>_vue.js 
-                <div class="gitLink">
-                    <a href="https://github.com/yecapee/_vue/blob/master/_vue.js">GITHUB</a>
-                </div>
-            </h1>
-            
-            <p>
-                這個寫不完整的渲染函數花了我一個早餐時間,測試它也用了我一杯無糖可樂的時間.<br/>
-                <br/> 但是建立這個網頁卻弄了我整個下午...
-                <br/> 這個函數雖然沒經過仔細測試 但我猜它應該具備以下特性：
-            </p>
-        </div>
-        <ul class="content">
-            <li>- 沒有錯誤檢查</li>
-            <li>- 沒有list的解決方案</li>
-            <li>- 沒有優美的風格</li>
-            <li>- 沒有效能</li>
-            <li>- 沒有虛擬dom</li>
-            <li>- 沒有事件綁定</li>
-            <li>- 沒有子元件</li>
-            <li>- 沒有的很多 但是不影響我的自我感覺良好</li>
-            <li>- 某個層面來說它可以用</li>
-            <li>+ 國人自製</li>
-        </ul>
-        <div class="content">
-            <h4>Source code</h4>
-            <pre><code class="javascript">
+    <div class="content">
+        <h1>_vue.js
+            <div class="gitLink">
+                <a href="https://github.com/yecapee/_vue/blob/master/_vue.js">GITHUB</a>
+            </div>
+        </h1>
+
+        <p>
+            這個寫不完整的渲染函數花了我一個早餐時間,測試它也用了我一杯無糖可樂的時間.
+            <br/>
+            <br/> 但是建立這個網頁卻弄了我整個下午...
+            <br/> 這個函數雖然沒經過仔細測試 但我猜它應該具備以下特性：
+        </p>
+    </div>
+    <ul class="content">
+        <li>- 沒有錯誤檢查</li>
+        <li>- 沒有list的解決方案</li>
+        <li>- 沒有優美的風格</li>
+        <li>- 沒有效能</li>
+        <li>- 沒有虛擬dom</li>
+        <li>- 沒有事件綁定</li>
+        <li>-
+            <strike>沒有子元件</strike>
+        </li>
+        <li>- 沒有的很多 但是不影響我的自我感覺良好</li>
+        <li>- 某個層面來說它可以用</li>
+        <li>+ 國人自製</li>
+    </ul>
+    <div class="content">
+        <h4>Source code</h4>
+        <pre>
+            <code class="javascript">
 function _vue(obj) {
     this.id = obj.domId;
     this.template = document.getElementById(this.id).innerHTML;
@@ -191,19 +227,25 @@ function _vue(obj) {
     }
     this.change();
 }
-            </code></pre>
+            </code>
+        </pre>
 
-            <h4>Example</h4>
-            <h6>HTML</h6>
-            <pre><code class="html">
+        <h4>Example</h4>
+        <h4 class="underLine">模板</h4>
+        <p>從Vue模仿的模板寫法</p>
+        <h6>HTML</h6>
+        <pre>
+            <code class="html">
 &ltdiv id="app"&gt
     &ltstrong&gt{title}&lt/strong&gt
     {body}
 &lt/div&gt
-            </code></pre>
+            </code>
+        </pre>
 
-            <h6>JS</h6>
-            <pre><code class="javascript">
+        <h6>JS</h6>
+        <pre>
+            <code class="javascript">
 var app = new _vue({
     domId:'app',
     data:{
@@ -211,39 +253,90 @@ var app = new _vue({
         body:'_vue!'
     }
 });
-            </code></pre>
-            <h6>RESULT</h6>
-            <div class="result">
-                <strong>Hello</strong>
-                _vue!
-            </div>
+            </code>
+        </pre>
+        <h6>RESULT</h6>
+        <div class="result">
+            <strong>Hello</strong>
+            _vue!
+        </div>
 
-            <P>
-                另外,你還可以透過change方法動態更新內容
-            </P>
+        <h4 class="underLine">動態更新</h4>
+        <P>
+            還可以透過change方法動態更新內容，雖然沒有Vue那麼神奇的屬性更新
+        </P>
 
-            <h6>JS</h6>
-            <pre><code class="javascript">
+        <h6>JS</h6>
+        <pre>
+            <code class="javascript">
 app.change({
     body: vueeeeeeeeeeeeeee!
 });         
-            </code></pre>
-            <h6>RESULT</h6>
-            <div class="result">
-                <strong>Hello</strong>
-                vueeeeeeeeeeeeeee!
-            </div>
+            </code>
+        </pre>
 
+        <h6>RESULT</h6>
+        <div class="result">
+            <strong>Hello</strong>
+            vueeeeeeeeeeeeeee!
         </div>
-        <div>
+
+        <h4 class="underLine">零件系統</h4>
+        <P>
+            雖然很吃力..我還是模仿了Vue的組建系統，反正Vue可能也是模仿React的
+        </P>
+        <h6>HTML</h6>
+        <pre>
+            <code class="html">
+&ltdiv id="app"&gt
+    &ltstrong&gt{title}&lt/strong&gt
+    {body}
+    &ltvue body="not Vue"&gt{body}&lt/vue&gt
+&lt/div&gt
+            </code>
+        </pre>
+        
+        <h6>JS</h6>
+        <pre>
+            <code class="javascript">
+_vue.component({
+    el: 'vue',
+    template: '&ltp&gt{body}&lt/p&gt'
+});
+
+var app = new _vue({
+    domId: 'app',
+    data: {
+        title: 'HELLO',
+        body: '_vue.js'
+    }
+});      
+            </code>
+        </pre>
+
+        <h6>RESULT</h6>
+        <div class="result">
+            <strong>Hello</strong>
+            _vue.js
+            <p>not Vue</p>
+        </div>
+    </div>
+    <div>
         <div class="bottom">
             <p class="fl">
-                Panpan Pan <a href="https://github.com/yecapee"><i class="fa fa-github" aria-hidden="true"></i></a><br/>
+                Panpan Pan
+                <a href="https://github.com/yecapee">
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                </a>
+                <br/>
             </p>
             <p class="fr">
-                <span><i class="fa fa-envelope-o" aria-hidden="true"></i> yecapee@gmail.com</span>
-                <span><i class="fa fa-map-marker" aria-hidden="true"></i> 台灣</span>
-                <span><i class="fa fa-globe" aria-hidden="true"></i> 中文,台語</span>
+                <span>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> yecapee@gmail.com</span>
+                <span>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> 台灣</span>
+                <span>
+                    <i class="fa fa-globe" aria-hidden="true"></i> 中文,台語</span>
             </p>
         </div>
 </body>
