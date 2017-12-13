@@ -216,51 +216,52 @@
         <p>嗯。是蠻暴力的</p>
         <pre>
             <code class="javascript">
-function _vue(obj) {
-    this.id = obj.domId;
-    this.template = document.getElementById(this.id).innerHTML;
-    this.state = {};
-    this.render = function (template,dataObj) {
-        var rsHtml = template;
-        for (var key in dataObj) {
-            var reg = new RegExp('{' + key + '}', 'g')
-            rsHtml = rsHtml.replace(reg, dataObj[key]);
-        };
-        return rsHtml;
-    }
-    this.change = function (data) {
-        for (var key in data) {
-            this.state[key] = data[key];
+(function (global) {
+    function _vue(obj) {
+        this.id = obj.domId;
+        this.template = document.getElementById(this.id).innerHTML;
+        this.state = {};
+        this.render = function (template, dataObj) {
+            var rsHtml = template;
+            for (var key in dataObj) {
+                var reg = new RegExp('{' + key + '}', 'g')
+                rsHtml = rsHtml.replace(reg, dataObj[key]);
+            };
+            return rsHtml;
         }
-        document.getElementById(this.id).innerHTML = this.render(this.template, this.state);
-        this.componentBind();
-    }
-    this.componentBind = function(){
-        var __vue = this.constructor;
-        var render = this.render;
-        for (var key in __vue.comTemplate) {
-            var comTemplate = __vue.comTemplate[key];
-            document.querySelectorAll('#' + this.id + ' ' + key).forEach(function (el, index) {
-                var data = {};
-                for(var i = 0; i < el.attributes.length; i++ ){
-                    data[el.attributes[i].name] = el.attributes[i].value;
-                }
-                el.innerHTML = render(comTemplate,data);
-            })
+        this.change = function (data) {
+            for (var key in data) {
+                this.state[key] = data[key];
+            }
+            document.getElementById(this.id).innerHTML = this.render(this.template, this.state);
+            this.componentBind();
         }
+        this.componentBind = function () {
+            var __vue = this.constructor;
+            var render = this.render;
+            for (var key in __vue.comTemplate) {
+                var comTemplate = __vue.comTemplate[key];
+                document.querySelectorAll('#' + this.id + ' ' + key).forEach(function (el, index) {
+                    var data = {};
+                    for (var i = 0; i < el.attributes.length; i++) {
+                        data[el.attributes[i].name] = el.attributes[i].value;
+                    }
+                    el.innerHTML = render(comTemplate, data);
+                })
+            }
+        }
+    
+        for (var key in obj.data) {
+            this.state[key] = obj.data[key];
+        }
+        this.change();
     }
-
-    for (var key in obj.data) {
-        this.state[key] = obj.data[key];
-    }
-    this.change();
-}
-
-_vue.comTemplate = {};
-
-_vue.component = function(obj) {
-    this.comTemplate[obj.el] = obj.template;
-};
+    _vue.comTemplate = {};
+    _vue.component = function (obj) {
+        this.comTemplate[obj.el] = obj.template;
+    };
+    global._vue = _vue;
+})(window);
             </code>
         </pre>
 
