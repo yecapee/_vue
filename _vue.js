@@ -38,7 +38,6 @@
               })
           }
       }
-
       for (var key in obj.data) {
           this.state[key] = obj.data[key];
       }
