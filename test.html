@@ -2,23 +2,74 @@
 
 <script src="_vue.js"></script>
 <body>
-    <div id="app">
+    <div id="todoWithAdd">
         <h1>{title}</h1>
         <h2>{body}</h2>
-        <vue text="not Vue.js"></vue>
+        <button v-click="addlist">addlist</button>
+        <ol v-for="list">
+            <li>{text}-{date}</li>
+        </ol>
     </div>
+
+    <div id="todo">
+        <h2>{title}</h2>
+        <ol v-for="list">
+            <li>{text}</li>
+        </ol>
+    </div>
+
+    <div id="componentExample">
+        <strong>{title}</strong>
+        <strike>{body}</strike>
+        <vue text="_vue.js"></vue>
+    </div>
+
 </body>
 <script>
-    _vue.component({
-        el: 'vue',
-        template: '<h3>{text}</h3>'
-    });
-    
-    var app = new _vue({
-        domId: 'app',
+    var todoWithAdd = new _vue({
+        domId: 'todoWithAdd',
         data: {
             title: 'HELLO',
-            body: '_vue.js'
+            body: '_vue.js',
+            list:[
+                {text:'list 1',date:'2017/10/5'},
+                {text:'list 2',date:'2017/10/6'},
+                {text:'list 3',date:'2017/10/8'},
+            ],
+        },
+        methods: {
+            addlist: function () {
+                this.state.list.push({
+                    text:'list new',
+                    date:new Date()
+                });
+                this.change();
+            }
+        }
+    });
+
+    var todo = new _vue({
+        domId: 'todo',
+        data: {
+            title: 'Todo list',
+            list:[
+                {text:'牽摩托車去修理'},
+                {text:'吃早餐'},
+                {text:'抱怨主管'},
+            ],
+        }
+    });
+
+    _vue.component({
+        el: 'vue',
+        template: '{text}'
+    });
+    
+    var componentExample = new _vue({
+        domId: 'componentExample',
+        data: {
+            title: 'HELLO',
+            body: 'Vue.js',
         }
     });
 </script>

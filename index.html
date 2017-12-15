@@ -13,6 +13,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-5NN74MQ');</script>
     <!-- End Google Tag Manager -->
+    <script src="_vue.js"></script>
 </head>
 <title>_vue.js</title>
 <style>
@@ -92,7 +93,7 @@
         box-sizing: border-box;
     }
 
-    li {
+    .noli li {
         list-style: none;
         line-height: 1.6em;
         color: white;
@@ -198,15 +199,14 @@
             <br/> 這個函數雖然沒經過仔細測試 但我猜它應該具備以下特性：
         </p>
     </div>
-    <ul class="content">
+    <ul class="content noli">
         <li>- 沒有錯誤檢查</li>
-        <li>- 沒有list的解決方案</li>
+        <li>- <strike>沒有list的解決方案</strike></li>
         <li>- 沒有優美的風格</li>
         <li>- 沒有效能</li>
         <li>- 沒有虛擬dom</li>
-        <li>- 沒有事件綁定</li>
-        <li>-<strike>沒有子元件</strike>
-        </li>
+        <li>- <strike>沒有事件綁定</strike></li>
+        <li>- <strike>沒有子元件</strike></li>
         <li>- 沒有的很多 但是不影響我的自我感覺良好</li>
         <li>- 某個層面來說它可以用</li>
         <li>+ 國人自製</li>
@@ -291,40 +291,178 @@ var app = new _vue({
         </pre>
         <h6>RESULT</h6>
         <div class="result">
-            <strong>Hello</strong>
-            _vue!
+            <div id="app">
+                <strong>{title}</strong>{body}
+            </div>
         </div>
-
+        <script>
+            var app = new _vue({
+                domId: 'app',
+                data: {
+                    title: 'HELLO',
+                    body:'_vue'
+                }
+            });   
+        </script> 
         <h4 class="underLine">動態更新</h4>
         <P>
-            還可以透過change方法動態更新內容，雖然沒有Vue那麼神奇的屬性更新
+            還可以透過change方法動態更新內容，雖然沒有Vue那麼神奇的屬性更新<br/>
+            你可以在console介面使用下面的指令，然後app區塊的body就會跟著變動了<br/>
         </P>
 
         <h6>JS</h6>
         <pre>
             <code class="javascript">
 app.change({
-    body: vueeeeeeeeeeeeeee!
+    body: 'vueeeeeeeeeeeeeee!'
 });         
+            </code>
+        </pre>
+
+        <h4 class="underLine">循環指令</h4>
+        <P>
+            _vue復刻了Vue經常被使用的循環指令，所以列出清單應該也不是什麼難事了
+        </P>
+        <h6>HTML</h6>
+        <pre>
+            <code class="html">
+&ltdiv id="todo"&gt
+    &lth2&gt{title}&lt/h2&gt
+        &ltol v-for="list"&gt
+        &ltli&gt{text}&lt/li&gt
+    &lt/ol&gt
+&lt/div&gt
+            </code>
+        </pre>
+
+        <h6>JS</h6>
+        <pre>
+            <code class="javascript">
+var todo = new _vue({
+    domId: 'todo',
+    data: {
+        title: 'Todo list',
+        list:[
+            {text:'牽摩托車去修理'},
+            {text:'吃早餐'},
+            {text:'抱怨主管'},
+        ],
+    }
+});
             </code>
         </pre>
 
         <h6>RESULT</h6>
         <div class="result">
-            <strong>Hello</strong>
-            vueeeeeeeeeeeeeee!
+            <div id="todo">
+                <h2>{title}</h2>
+                <ol v-for="list">
+                    <li style="color:black">{text}</li>
+                </ol>
+            </div>
         </div>
-
-        <h4 class="underLine">零件系統</h4>
+        <script>
+            var todo = new _vue({
+                domId: 'todo',
+                data: {
+                    title: 'Todo list',
+                    list:[
+                        {text:'牽摩托車去修理'},
+                        {text:'吃早餐'},
+                        {text:'抱怨主管'},
+                    ],
+                }
+            });   
+        </script> 
+        <h4 class="underLine">事件綁定</h4>
         <P>
-            雖然很吃力..我還是模仿了Vue的組建系統，反正Vue可能也是模仿React的
+            現在你可以透過v-click屬性來替元素新增click事件，而在事件裡你可以透過this來取得自己的所有方法<br/>
+            接下來的例子擴增了剛剛的list清單，當你按下button就會新增一個清單
         </P>
         <h6>HTML</h6>
         <pre>
             <code class="html">
-&ltdiv id="app"&gt
-    &ltstrong&gt{title}&lt/strong&gt{body}
-    &ltvue body="not Vue"&gt&lt/vue&gt
+&ltdiv id="todoWithAdd"&gt
+    &lth2&gt{title}&lt/h2&gt
+    &ltbutton v-click="addlist"&gtaddlist&lt/button&gt
+    &ltol v-for="list"&gt
+        &ltli&gt{text}-{date}&lt/li&gt
+    &lt/ol&gt
+&lt/div&gt
+            </code>
+        </pre>
+
+        <h6>JS</h6>
+        <pre>
+            <code class="javascript">
+var todoWithAdd = new _vue({
+    domId: 'todoWithAdd',
+    data: {
+        title: 'HELLO',
+        body: '_vue.js',
+        list:[
+            {text:'list 1',date:'2017/10/5'},
+            {text:'list 2',date:'2017/10/6'},
+            {text:'list 3',date:'2017/10/8'},
+        ],
+    },
+    methods: {
+        addlist: function () {
+            this.state.list.push({
+                text:'list new',
+                date:new Date()
+            });
+            this.change();
+        }
+    }
+});
+            </code>
+        </pre>
+
+        <h6>RESULT</h6>
+        <div class="result">
+            <div id="todoWithAdd">
+                <h2>{title}</h2>
+                <button v-click="addlist">addlist</button>
+                <ol v-for="list">
+                    <li>{text}-{date}</li>
+                </ol>
+            </div>
+        </div>
+        <script>
+            var todoWithAdd = new _vue({
+                domId: 'todoWithAdd',
+                data: {
+                    title: 'Todo list',
+                    list:[
+                        {text:'list 1',date:'2017/10/5'},
+                        {text:'list 2',date:'2017/10/6'},
+                        {text:'list 3',date:'2017/10/8'},
+                    ],
+                },
+                methods: {
+                    addlist: function () {
+                        this.state.list.push({
+                            text:'list new',
+                            date:new Date()
+                        });
+                        this.change();
+                    }
+                }
+            });        
+        </script>
+        <h4 class="underLine">元件系統</h4>
+        <P>
+            雖然很吃力..我還是模仿了Vue的元件系統，反正Vue可能也是模仿React的<br/>
+            使用方法是透過_vue.component指令跟_vue註冊一個元件，之後就可以在_vue裡使用自訂元件
+        </P>
+        <h6>HTML</h6>
+        <pre>
+            <code class="html">
+&ltdiv id="componentExample"&gt
+    &ltstrong&gt{title}&lt/strong&gt
+    &ltstrike&gt{body}&lt/strike&gt
+    &ltvue text="_vue.js"&gt&lt/vue&gt
 &lt/div&gt
             </code>
         </pre>
@@ -334,25 +472,39 @@ app.change({
             <code class="javascript">
 _vue.component({
     el: 'vue',
-    template: '&ltp&gt{body}&lt/p&gt'
+    template: '{text}'
 });
-
-var app = new _vue({
-    domId: 'app',
+var componentExample = new _vue({
+    domId: 'componentExample',
     data: {
         title: 'HELLO',
-        body: '_vue.js'
+        body: 'Vue.js',
     }
-});      
+});  
             </code>
         </pre>
 
         <h6>RESULT</h6>
         <div class="result">
-            <strong>Hello</strong>
-            _vue.js
-            <p>not Vue</p>
+            <div id="componentExample">
+                <strong>{title}</strong>
+                <strike>{body}</strike>
+                <vue text="_vue.js"></vue>
+            </div>
         </div>
+        <script>
+            _vue.component({
+                el: 'vue',
+                template: '{text}'
+            });
+            var componentExample = new _vue({
+                domId: 'componentExample',
+                data: {
+                    title: 'HELLO',
+                    body: 'Vue.js',
+                }
+            }); 
+        </script> 
     </div>
     <div>
         <div class="bottom">
