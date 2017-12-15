@@ -1,17 +1,9 @@
 <html>
 
-<script src="_vue.js"></script>
+<script src="https://rawgit.com/yecapee/_vue/master/_vue.js"></script>
 <body>
-    <div id="todoWithAdd">
-        <h1>{title}</h1>
-        <h2>{body}</h2>
-        <button v-click="addlist">addlist</button>
-        <ol v-for="list">
-            <li>{text}-{date}</li>
-        </ol>
-    </div>
 
-    <div id="todo">
+    <div id="todo_">
         <h2>{title}</h2>
         <ol v-for="list">
             <li>{text}</li>
@@ -24,6 +16,15 @@
         <vue text="_vue.js"></vue>
     </div>
 
+    <div id="todoWithAdd">
+        <h1>{title}</h1>
+        <h2>{body}</h2>
+        <button v-click="addlist">addlist</button>
+        <ol v-for="list">
+            <li>{text}-{date} <button v-click="del" key="{key}">del</button></li>
+        </ol>
+    </div>
+
 </body>
 <script>
     var todoWithAdd = new _vue({
@@ -31,18 +32,24 @@
         data: {
             title: 'HELLO',
             body: '_vue.js',
-            list:[
-                {text:'list 1',date:'2017/10/5'},
-                {text:'list 2',date:'2017/10/6'},
-                {text:'list 3',date:'2017/10/8'},
-            ],
+            list:[],
         },
         methods: {
             addlist: function () {
                 this.state.list.push({
                     text:'list new',
+                    key:Math.random(),
                     date:new Date()
                 });
+                this.change();
+            },
+            del: function(e){
+                var no = e.target.getAttribute('key');
+                for(var key in this.state.list){
+                    if(this.state.list[key]['key'] == no){
+                        this.state.list.splice(key,1);
+                    }
+                }
                 this.change();
             }
         }

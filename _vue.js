@@ -60,6 +60,7 @@
             document.querySelectorAll('#'+this.id+' ['+key+']').forEach(function(el,index){
               for (var i = 0; i < el.attributes.length; i++) {
                 if(el.attributes[i].name){
+                  this.event[el.attributes[i].value] && 
                   eventType[el.attributes[i].name](el, this.event[el.attributes[i].value].bind(this) );
                 }
               }
